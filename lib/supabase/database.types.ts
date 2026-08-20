@@ -249,6 +249,24 @@ export type Database = {
         }
         Relationships: []
       }
+      perfil: {
+        Row: {
+          ecodusuario: string
+          erol: Database["public"]["Enums"]["rol_usuario"]
+          fhcreate: string | null
+        }
+        Insert: {
+          ecodusuario: string
+          erol?: Database["public"]["Enums"]["rol_usuario"]
+          fhcreate?: string | null
+        }
+        Update: {
+          ecodusuario?: string
+          erol?: Database["public"]["Enums"]["rol_usuario"]
+          fhcreate?: string | null
+        }
+        Relationships: []
+      }
       servicio: {
         Row: {
           bstateactivo: boolean | null
@@ -341,7 +359,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      rol_usuario: "cliente" | "negocio" | "sistemas"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -468,6 +486,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      rol_usuario: ["cliente", "negocio", "sistemas"],
+    },
   },
 } as const
